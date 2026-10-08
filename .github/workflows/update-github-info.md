@@ -8,8 +8,12 @@ permissions:
   contents: read
   pull-requests: read
 
-engine: copilot
-model: gpt-4.1
+engine:
+  id: copilot
+  model: gpt-4.1
+  # Copilot CLI gates curl by URL separately from shell(curl); pre-approve the
+  # blog host so non-interactive runs aren't auto-denied.
+  args: ["--allow-url=github.blog"]
 
 tools:
   edit:
