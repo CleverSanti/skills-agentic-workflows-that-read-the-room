@@ -9,7 +9,7 @@ permissions:
   pull-requests: read
 
 engine: copilot
-model: claude-sonnet-5
+model: gpt-4.1
 
 tools:
   edit:
