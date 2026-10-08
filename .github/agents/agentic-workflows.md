@@ -222,7 +222,7 @@ gh aw compile --validate
 
 ## Workspace Workflow Editing Rule
 
-When creating or editing agentic workflow Markdown files in this workspace, never compile them, manually or automatically. Do not create or update generated `.lock.yml` files. Only create or update the Markdown workflow file.
+When creating or editing agentic workflow Markdown files in this workspace, do not compile them, manually or automatically. Do not create or update generated `.lock.yml` files. Only create or update the Markdown workflow file.
 
 ## Important Notes
 
