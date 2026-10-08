@@ -18,6 +18,7 @@ network:
   allowed:
     - github.blog
     - github.com
+    - awesome-copilot.github.com
 
 safe-outputs:
   create-pull-request:
@@ -34,6 +35,7 @@ Use the web-fetch tool to read both of these official sources:
 
 - https://github.blog/latest/
 - https://github.blog/changelog/
+- https://awesome-copilot.github.com/workflows/
 
 Identify recent, practical GitHub updates that are useful to developers and fit Mona's editorial angle. Update `site/content/github-info.md` with concise, factual summaries, avoid duplicating existing themes, and link to the specific source for every new item. Do not invent details or include an item unless the source supports it. Preserve the existing document's structure and other content.
 
