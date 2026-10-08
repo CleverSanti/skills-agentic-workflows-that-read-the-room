@@ -10,7 +10,7 @@ permissions:
 
 engine:
   id: copilot
-  model: claude-sonnet-5.5
+  model: gpt-4.1
   # Copilot CLI gates curl by URL separately from shell(curl); pre-approve the
   # blog host so non-interactive runs aren't auto-denied.
   args: ["--allow-url=github.blog"]
