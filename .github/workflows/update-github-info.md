@@ -9,6 +9,7 @@ permissions:
   pull-requests: read
 
 engine: copilot
+model: claude-sonnet-5
 
 tools:
   edit:
