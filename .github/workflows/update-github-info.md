@@ -32,13 +32,13 @@ safe-outputs:
 
 Read `notes/mona-notes.md` and the current `site/content/github-info.md` before drafting any changes.
 
-This workflow runs on the GitHub Copilot CLI, where `web_fetch` is not available. Use the shell tool to run one `curl` request for each URL below and read the returned page content:
+This workflow runs on the GitHub Copilot CLI, where `web_fetch` is not available. Use the shell tool to run one `curl` request for each URL below. These endpoints return compact JSON rather than full HTML pages:
 
-- https://github.blog/latest/
-- https://github.blog/changelog/
-- https://awesome-copilot.github.com/workflows/
+- https://github.blog/wp-json/wp/v2/posts?per_page=5&_fields=date,link,title,excerpt
+- https://github.blog/wp-json/wp/v2/changelogs?per_page=5&_fields=date,link,title,excerpt
+- https://github.blog/wp-json/wp/v2/posts?search=Copilot&orderby=date&order=desc&per_page=5&_fields=date,link,title,excerpt
 
-Run each request as `curl --fail --location --silent --show-error --max-time 30 URL`. Attempt each of the three requests once before deciding what to do; do not treat missing or unread source content as evidence that there is nothing to add. The workflow allowlists `curl` shell calls, and the network policy restricts outbound requests to the listed GitHub domains. Do not call `web_fetch`, use other shell commands, install tools, or access any other host. If any request fails, report the failed URL with the `noop` safe output rather than guessing or inventing details.
+Run each request as `curl --fail --location --silent --show-error --max-time 30 URL`, read its complete response, and attempt all three requests before deciding what to do. The first endpoint returns the five newest GitHub Blog posts, the second returns the five newest Changelog entries, and the third returns five recent posts matching Copilot; each includes a date, direct link, title, and excerpt. Only use details supported by those fields, and consider items dated within the last 14 days. Do not fetch full archive pages, RSS feeds, or other hosts. The workflow allowlists `curl` shell calls, and the network policy restricts outbound requests to the listed GitHub domains. Do not call `web_fetch`, use other shell commands, install tools, or access any other host. If any request fails, report the failed URL with the `noop` safe output rather than guessing or inventing details.
 
 For each successfully fetched source, identify specific announcements or updates and verify them against the current `site/content/github-info.md`. A candidate qualifies when its source supports a concrete, practical takeaway for developers and that specific takeaway is not already covered by the page. Sharing a broad theme with existing content (such as Copilot or Actions) does not by itself make a specific new update a duplicate. Do not invent details or include an item unless the source supports it.
 
